@@ -1,0 +1,301 @@
+swagger: "2.0"
+info:
+  title: Microservicio de certificados
+  description: GO + postgres
+  version: 1.0.0
+  contact:
+    email: diagutierrezro@unal.edu.co
+  license:
+    name: Diego Alejandro Gutierrez
+host: host:8081
+basePath: /v1
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /certificado/:
+    get:
+      tags:
+      - certificado
+      description: get Certificado
+      operationId: CertificadoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Certificado'
+        "403":
+          description: ""
+    post:
+      tags:
+      - certificado
+      description: create Certificado
+      operationId: CertificadoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Certificado content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Certificado'
+      responses:
+        "201":
+          description: '{int} models.Certificado'
+        "403":
+          description: body is empty
+  /certificado/{id}:
+    get:
+      tags:
+      - certificado
+      description: get Certificado by id
+      operationId: CertificadoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Certificado'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - certificado
+      description: update the Certificado
+      operationId: CertificadoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Certificado content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Certificado'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Certificado'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - certificado
+      description: delete the Certificado
+      operationId: CertificadoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /datos_usuario_curso/:
+    get:
+      tags:
+      - datos_usuario_curso
+      description: get DatosUsuarioCurso
+      operationId: DatosUsuarioCursoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DatosUsuarioCurso'
+        "403":
+          description: ""
+    post:
+      tags:
+      - datos_usuario_curso
+      description: create DatosUsuarioCurso
+      operationId: DatosUsuarioCursoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for DatosUsuarioCurso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.DatosUsuarioCurso'
+      responses:
+        "201":
+          description: '{int} models.DatosUsuarioCurso'
+        "403":
+          description: body is empty
+  /datos_usuario_curso/{id}:
+    get:
+      tags:
+      - datos_usuario_curso
+      description: get DatosUsuarioCurso by id
+      operationId: DatosUsuarioCursoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DatosUsuarioCurso'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - datos_usuario_curso
+      description: update the DatosUsuarioCurso
+      operationId: DatosUsuarioCursoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for DatosUsuarioCurso content
+        required: true
+        schema:
+          $ref: '#/definitions/models.DatosUsuarioCurso'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.DatosUsuarioCurso'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - datos_usuario_curso
+      description: delete the DatosUsuarioCurso
+      operationId: DatosUsuarioCursoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+
+definitions:
+
+  models.Certificado:
+    title: Certificado
+    type: object
+    properties:
+      Id:
+        type: integer
+      IdCurso:
+        type: integer
+      IdUsuario:
+        $ref: '#/definitions/models.DatosUsuarioCurso'
+      Texto:
+        type: string
+
+  models.DatosUsuarioCurso:
+    title: DatosUsuarioCurso
+    type: object
+    properties:
+      DocumentoUsuario:
+        type: integer
+      Id:
+        type: integer
+      IdCurso:
+        type: integer
+      IdUsuario:
+        type: integer
+      NombreCurso:
+        type: string
+      NombreUsuario:
+        type: string
+tags:
+- name: datos_usuario_curso
+  description: |
+    DatosUsuarioCursoController operations for DatosUsuarioCurso
+- name: certificado
+  description: |
+    CertificadoController operations for Certificado
+
+# Errors
+ErrorModel:
+  type: object
+  required:
+    - message
+    - code
+  properties:
+    message:
+      type: string
+    code:
+      type: number
+    description:
+      type: object
