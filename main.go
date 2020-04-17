@@ -4,7 +4,8 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/plugins/cors"
-	_ "github.com/diagutierrezro/certificado_crud/routers"
+
+	_ "github.com/diagutierrezro/ULearn_certificado_ms/routers"
 	_ "github.com/lib/pq"
 )
 
