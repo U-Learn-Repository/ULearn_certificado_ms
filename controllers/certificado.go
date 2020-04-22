@@ -3,12 +3,12 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"strconv"
 	"strings"
 
-	"github.com/diagutierrezro/certificado_crud/models"
-
 	"github.com/astaxie/beego"
+	"github.com/diagutierrezro/ULearn_certificado_ms/models"
 )
 
 // CertificadoController operations for Certificado
@@ -33,9 +33,13 @@ func (c *CertificadoController) URLMapping() {
 // @Failure 403 body is empty
 // @router / [post]
 func (c *CertificadoController) Post() {
+	nameStr := c.Ctx.Input.Param(":name")
+	surnameStr := c.Ctx.Input.Param(":surname")
+	docStr := c.Ctx.Input.Param(":documento")
 	var v models.Certificado
+	fmt.Println(nameStr)
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddCertificado(&v); err == nil {
+		if _, err := models.AddCertificado(&v, nameStr, surnameStr, docStr); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {

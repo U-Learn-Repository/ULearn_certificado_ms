@@ -4,19 +4,28 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
-	"strconv"
 	"strings"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/diagutierrezro/ULearn_certificado_ms/helpers"
 )
 
 type Certificado struct {
-	Id        int                `orm:"column(id_certificado);pk;auto"`
-	Texto     string             `orm:"column(texto)"`
-	IdUsuario *DatosUsuarioCurso `orm:"column(id_usuario);rel(fk)"`
-	IdCurso   int                `orm:"column(id_curso)"`
+	Id        int    `orm:"column(id_certificado);pk;auto"`
+	Texto     string `orm:"column(texto)"`
+	IdUsuario int    `orm:"column(id_usuario)"`
+	IdCurso   int    `orm:"column(id_curso)"`
 }
 
+/*
+type CertificadoUser struct {
+	Id        int    `orm:"column(id_certificado);pk;auto"`
+	Texto     string `orm:"column(texto)"`
+	IdUsuario int    `orm:"column(id_usuario)"`
+	IdCurso   int    `orm:"column(id_curso)"`
+	Usuarios  map[string]interface{}
+}
+*/
 func (t *Certificado) TableName() string {
 	return "certificado"
 }
@@ -27,38 +36,31 @@ func init() {
 
 // AddCertificado insert a new Certificado into database and returns
 // last inserted Id on success.
-func AddCertificado(m *Certificado) (id int64, err error) {
+func AddCertificado(m *Certificado, name string, surname string, documento string) (id int64, err error) {
 	o := orm.NewOrm()
-	v := m.IdUsuario
-	e := o.QueryTable("DatosUsuarioCurso").Filter("Id", m.IdUsuario).RelatedSel().One(v)
-	fmt.Println(e)
-	m.IdCurso = v.IdCurso
-	m.Texto = "El usuario " + v.NombreUsuario + " identificado con C.C " + strconv.Itoa(v.DocumentoUsuario) +
-		" completó satisfactoriamente el curso de " + v.NombreCurso + " el cual es ofrecido por U_Learn. " +
-		"Por lo tanto se le es otorgado el certificado"
+	curso := helpers.ObtenerCurso(m.IdCurso)
+	//usuario := helpers.ObtenerUsuario(m.IdUsuario)
+	//	m.Usuarios
+	//helpers.Principal()
+	fmt.Println(m.IdCurso)
+	fmt.Println(m.IdUsuario)
+	fmt.Println(name)
+	fmt.Println(name)
+	m.Texto = "El usuario " + name + " " + surname + " identificado con el numero de documento " + documento +
+		" completó satisfactoriamente el curso de " + fmt.Sprint(curso["nombre"]) + " el cual es ofrecido por U_Learn y tiene una duracion de " +
+		fmt.Sprint(curso["duracion"]) + ", por lo tanto se le es otorgado el certificado."
 	id, err = o.Insert(m)
+
 	return
 }
 
 // GetCertificadoById retrieves Certificado by Id. Returns error if
 // Id doesn't exist
-/*func GetCertificadoById(id int) (v *Certificado, err error) {
+func GetCertificadoById(id int) (v *Certificado, err error) {
 	o := orm.NewOrm()
 	v = &Certificado{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
-	}
-	return nil, err
-}*/
-
-func GetCertificadoById(id int) (v *Certificado, err error) {
-	o := orm.NewOrm()
-	v = &Certificado{}
-	e := o.QueryTable("certificado").Filter("Id", id).RelatedSel().One(v)
-	if e == nil {
-		return v, nil
-	} else {
-		fmt.Println(e)
 	}
 	return nil, err
 }
@@ -68,7 +70,8 @@ func GetCertificadoById(id int) (v *Certificado, err error) {
 func GetAllCertificado(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Certificado)).RelatedSel()
+	qs := o.QueryTable(new(Certificado))
+	//helpers.Principal()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

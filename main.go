@@ -4,11 +4,12 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/plugins/cors"
-	_ "github.com/diagutierrezro/certificado_crud/routers"
+	_ "github.com/diagutierrezro/ULearn_certificado_ms/routers"
 	_ "github.com/lib/pq"
 )
 
 func main() {
+
 	orm.Debug = true
 	orm.RegisterDataBase("default", "postgres", "postgres://"+beego.AppConfig.String("PGuser")+":"+beego.AppConfig.String("PGpass")+"@"+beego.AppConfig.String("PGurls")+"/"+beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+beego.AppConfig.String("PGschemas")+"")
 	//orm.RegisterDataBase("default", "postgres", beego.AppConfig.String("sqlconn"))

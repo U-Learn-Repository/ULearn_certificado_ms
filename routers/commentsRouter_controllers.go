@@ -7,94 +7,49 @@ import (
 
 func init() {
 
-    beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:CertificadoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:CertificadoController"],
-        beego.ControllerComments{
-            Method: "Post",
-            Router: `/`,
-            AllowHTTPMethods: []string{"post"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
+	beego.GlobalControllerRouter["github.com/diagutierrezro/ULearn_certificado_ms/controllers:CertificadoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/ULearn_certificado_ms/controllers:CertificadoController"],
+		beego.ControllerComments{
+			Method:           "Post",
+			Router:           `/:name/:surname/:documento`,
+			AllowHTTPMethods: []string{"post"},
+			MethodParams:     param.Make(),
+			Filters:          nil,
+			Params:           nil})
 
-    beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:CertificadoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:CertificadoController"],
-        beego.ControllerComments{
-            Method: "GetAll",
-            Router: `/`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
+	beego.GlobalControllerRouter["github.com/diagutierrezro/ULearn_certificado_ms/controllers:CertificadoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/ULearn_certificado_ms/controllers:CertificadoController"],
+		beego.ControllerComments{
+			Method:           "GetAll",
+			Router:           `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams:     param.Make(),
+			Filters:          nil,
+			Params:           nil})
 
-    beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:CertificadoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:CertificadoController"],
-        beego.ControllerComments{
-            Method: "GetOne",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
+	beego.GlobalControllerRouter["github.com/diagutierrezro/ULearn_certificado_ms/controllers:CertificadoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/ULearn_certificado_ms/controllers:CertificadoController"],
+		beego.ControllerComments{
+			Method:           "GetOne",
+			Router:           `/:id`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams:     param.Make(),
+			Filters:          nil,
+			Params:           nil})
 
-    beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:CertificadoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:CertificadoController"],
-        beego.ControllerComments{
-            Method: "Put",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"put"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
+	beego.GlobalControllerRouter["github.com/diagutierrezro/ULearn_certificado_ms/controllers:CertificadoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/ULearn_certificado_ms/controllers:CertificadoController"],
+		beego.ControllerComments{
+			Method:           "Put",
+			Router:           `/:id`,
+			AllowHTTPMethods: []string{"put"},
+			MethodParams:     param.Make(),
+			Filters:          nil,
+			Params:           nil})
 
-    beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:CertificadoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:CertificadoController"],
-        beego.ControllerComments{
-            Method: "Delete",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"delete"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:DatosUsuarioCursoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:DatosUsuarioCursoController"],
-        beego.ControllerComments{
-            Method: "Post",
-            Router: `/`,
-            AllowHTTPMethods: []string{"post"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:DatosUsuarioCursoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:DatosUsuarioCursoController"],
-        beego.ControllerComments{
-            Method: "GetAll",
-            Router: `/`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:DatosUsuarioCursoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:DatosUsuarioCursoController"],
-        beego.ControllerComments{
-            Method: "GetOne",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:DatosUsuarioCursoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:DatosUsuarioCursoController"],
-        beego.ControllerComments{
-            Method: "Put",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"put"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:DatosUsuarioCursoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/certificado_crud/controllers:DatosUsuarioCursoController"],
-        beego.ControllerComments{
-            Method: "Delete",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"delete"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
+	beego.GlobalControllerRouter["github.com/diagutierrezro/ULearn_certificado_ms/controllers:CertificadoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/ULearn_certificado_ms/controllers:CertificadoController"],
+		beego.ControllerComments{
+			Method:           "Delete",
+			Router:           `/:id`,
+			AllowHTTPMethods: []string{"delete"},
+			MethodParams:     param.Make(),
+			Filters:          nil,
+			Params:           nil})
 
 }
