@@ -10,7 +10,7 @@ func init() {
 	beego.GlobalControllerRouter["github.com/diagutierrezro/ULearn_certificado_ms/controllers:CertificadoController"] = append(beego.GlobalControllerRouter["github.com/diagutierrezro/ULearn_certificado_ms/controllers:CertificadoController"],
 		beego.ControllerComments{
 			Method:           "Post",
-			Router:           `/:name/:surname/:documento`,
+			Router:           `/:name/:surname/:documento/:nombreCurso/:duracionCurso`,
 			AllowHTTPMethods: []string{"post"},
 			MethodParams:     param.Make(),
 			Filters:          nil,

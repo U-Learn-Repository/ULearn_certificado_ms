@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"github.com/astaxie/beego/orm"
-	"github.com/diagutierrezro/ULearn_certificado_ms/helpers"
 )
 
 type Certificado struct {
@@ -36,9 +35,9 @@ func init() {
 
 // AddCertificado insert a new Certificado into database and returns
 // last inserted Id on success.
-func AddCertificado(m *Certificado, name string, surname string, documento string) (id int64, err error) {
+func AddCertificado(m *Certificado, name string, surname string, documento string, nombreCurso string, duracionCurso string) (id int64, err error) {
 	o := orm.NewOrm()
-	curso := helpers.ObtenerCurso(m.IdCurso)
+	//curso := helpers.ObtenerCurso(m.IdCurso)
 	//usuario := helpers.ObtenerUsuario(m.IdUsuario)
 	//	m.Usuarios
 	//helpers.Principal()
@@ -47,8 +46,8 @@ func AddCertificado(m *Certificado, name string, surname string, documento strin
 	fmt.Println(name)
 	fmt.Println(name)
 	m.Texto = "El usuario " + name + " " + surname + " identificado con el numero de documento " + documento +
-		" completó satisfactoriamente el curso de " + fmt.Sprint(curso["nombre"]) + " el cual es ofrecido por U_Learn y tiene una duracion de " +
-		fmt.Sprint(curso["duracion"]) + ", por lo tanto se le es otorgado el certificado."
+		" completó satisfactoriamente el curso de " + nombreCurso + " el cual es ofrecido por U_Learn y tiene una duracion de " +
+		duracionCurso + " horas, por lo tanto se le es otorgado el certificado."
 	id, err = o.Insert(m)
 
 	return

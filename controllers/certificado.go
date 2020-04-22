@@ -36,10 +36,12 @@ func (c *CertificadoController) Post() {
 	nameStr := c.Ctx.Input.Param(":name")
 	surnameStr := c.Ctx.Input.Param(":surname")
 	docStr := c.Ctx.Input.Param(":documento")
+	nomCurStr := c.Ctx.Input.Param(":nombreCurso")
+	durCurStr := c.Ctx.Input.Param(":duracionCurso")
 	var v models.Certificado
 	fmt.Println(nameStr)
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddCertificado(&v, nameStr, surnameStr, docStr); err == nil {
+		if _, err := models.AddCertificado(&v, nameStr, surnameStr, docStr, nomCurStr, durCurStr); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
