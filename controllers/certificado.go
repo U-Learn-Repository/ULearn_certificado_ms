@@ -31,7 +31,7 @@ func (c *CertificadoController) URLMapping() {
 // @Param	body		body 	models.Certificado	true		"body for Certificado content"
 // @Success 201 {int} models.Certificado
 // @Failure 403 body is empty
-// @router / [post]
+// @router /:name/:surname/:documento/:nombreCurso/:duracionCurso [post]
 func (c *CertificadoController) Post() {
 	nameStr := c.Ctx.Input.Param(":name")
 	surnameStr := c.Ctx.Input.Param(":surname")
