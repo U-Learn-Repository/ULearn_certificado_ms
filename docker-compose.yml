@@ -14,7 +14,7 @@ services:
             - .env
         ports: 
             - "${PORT}:${PORT}"
-        environment: 
+        environment:
             - CERTIFICADO_CRUD_HTTP_PORT=${PORT}
             - API_NAME=${API_NAME}
             - CERTIFICADO_CRUD_DB_USER=${POSTGRES_USER}
