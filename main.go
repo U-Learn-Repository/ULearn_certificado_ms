@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/plugins/cors"
@@ -11,8 +13,11 @@ import (
 func main() {
 
 	orm.Debug = true
-	orm.RegisterDataBase("default", "postgres", "postgres://"+beego.AppConfig.String("PGuser")+":"+beego.AppConfig.String("PGpass")+"@"+beego.AppConfig.String("PGurls")+"/"+beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+beego.AppConfig.String("PGschemas")+"")
-	//orm.RegisterDataBase("default", "postgres", beego.AppConfig.String("sqlconn"))
+	//orm.RegisterDataBase("default", "postgres", "postgres://certificado123:certificado123@172.17.0.2:5432/ULearn_certificado_db?sslmode=disable&search_path=public")
+	//orm.RegisterDataBase("default", "postgres", "postgres://"+beego.AppConfig.String("PGuser")+":"+beego.AppConfig.String("PGpass")+"@"+beego.AppConfig.String("PGurls")+"/"+beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+beego.AppConfig.String("PGschemas")+"")
+	fmt.Println("Inicio")
+	orm.RegisterDataBase("default", "postgres", beego.AppConfig.String("sqlconn"))
+	fmt.Println("Pasó conexión")
 	if beego.BConfig.RunMode == "dev" {
 		beego.BConfig.WebConfig.DirectoryIndex = true
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"

@@ -1,0 +1,21 @@
+version: "3"
+services:
+  postgres:
+    build: .
+    image: postgres:latest
+    network_mode: bridge
+    container_name: postgres
+
+    expose:
+      - 6670
+    ports:
+      - 6670:5432
+    environment: 
+      - POSTGRES_HOST=ULearn_certificado_db
+      - POSTGRES_DB=ULearn_certificado_db
+      - POSTGRES_USER=certificado123
+      - POSTGRES_PASSWORD=certificado123
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    restart: always
+    stop_grace_period: 120s
+  # APP*****************************************

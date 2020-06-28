@@ -3,41 +3,24 @@ version: '3.4'
 services: 
     api: 
         build: ./bee_build
-        image: ${SERVICE_NAME}
-        links: 
-            - db
-        container_name: ${SERVICE_NAME}
+        image: ulearn_certificado_ms
+        container_name: ulearn_certificado_ms
         volumes: 
             - gosrc:/go
             - .:/go/src/${API_BASE_DIR}/${API_NAME}
         env_file: 
             - .env
         ports: 
-            - "${PORT}:${PORT}"
+            - "6671:6671"
         environment:
-            - CERTIFICADO_CRUD_HTTP_PORT=${PORT}
-            - API_NAME=${API_NAME}
-            - CERTIFICADO_CRUD_DB_USER=${POSTGRES_USER}
-            - CERTIFICADO_CRUD_DB_PASSWORD=${POSTGRES_PASSWORD}
-            - CERTIFICADO_CRUD_DB_URL=${POSTGRES_HOST}
-            - CERTIFICADO_CRUD_DB_NAME=${POSTGRES_DB}
-            - RUN_MODE=${RUN_MODE}
-        command: sh -c 'cd ${API_BASE_DIR}/${API_NAME};go get -v -u ./...; bee migrate -driver=postgres -conn="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:5432/${POSTGRES_DB}?sslmode=disable&search_path=public" || true; bee run -downdoc=true -gendoc=true'
-
-        
-    db:
-        container_name: ${POSTGRES_HOST}
-        image: postgres:10-alpine
-        ports: 
-            - "${DB_PORT}:5432"
-        volumes:
-            - postgres_data:/var/lib/postgresql/data
-        environment: 
-            - POSTGRES_HOST=${POSTGRES_HOST}
-            - POSTGRES_DB=${POSTGRES_DB}
-            - POSTGRES_USER=${POSTGRES_USER}
-            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+            - CERTIFICADO_CRUD_HTTP_PORT=6671
+            - API_NAME=ULearn_certificado_ms
+            - CERTIFICADO_CRUD_DB_USER=certificado123
+            - CERTIFICADO_CRUD_DB_PASSWORD=certificado123
+            - CERTIFICADO_CRUD_DB_URL=ULearn_certificado_db
+            - CERTIFICADO_CRUD_DB_NAME=ULearn_certificado_db
+            - RUN_MODE=dev
+        command: sh -c 'cd github.com/diagutierrezro/ULearn_certificado_ms;go get -v -u ./...; bee run -downdoc=true -gendoc=true'
 
 volumes:
     gosrc:
-    postgres_data:
