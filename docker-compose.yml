@@ -5,22 +5,22 @@ services:
         build: ./bee_build
         image: ulearn_certificado_ms
         container_name: ulearn_certificado_ms
-        volumes: 
-            - gosrc:/go
-            - .:/go/src/${API_BASE_DIR}/${API_NAME}
-        env_file: 
-            - .env
-        ports: 
-            - "6671:6671"
-        environment:
-            - CERTIFICADO_CRUD_HTTP_PORT=6671
-            - API_NAME=ULearn_certificado_ms
-            - CERTIFICADO_CRUD_DB_USER=certificado123
-            - CERTIFICADO_CRUD_DB_PASSWORD=certificado123
-            - CERTIFICADO_CRUD_DB_URL=ULearn_certificado_db
-            - CERTIFICADO_CRUD_DB_NAME=ULearn_certificado_db
-            - RUN_MODE=dev
-        command: sh -c 'cd github.com/diagutierrezro/ULearn_certificado_ms;go get -v -u ./...; bee run -downdoc=true -gendoc=true'
+        # volumes: 
+        #     - gosrc:/go
+        #     - .:/go/src/github.com/diagutierrezro/ULearn_certificado_ms
+        # env_file: 
+        #     - .env
+        # ports: 
+        #     - "6671:6671"
+        # environment:
+        #     - CERTIFICADO_CRUD_HTTP_PORT=6671
+        #     - API_NAME=ULearn_certificado_ms
+        #     - CERTIFICADO_CRUD_DB_USER=certificado123
+        #     - CERTIFICADO_CRUD_DB_PASSWORD=certificado123
+        #     - CERTIFICADO_CRUD_DB_URL=ULearn_certificado_db
+        #     - CERTIFICADO_CRUD_DB_NAME=ULearn_certificado_db
+        #     - RUN_MODE=dev
+        #command: sh -c 'cd github.com/diagutierrezro/ULearn_certificado_ms;go get -v -u ./...; bee run -downdoc=true -gendoc=true'
 
 volumes:
     gosrc:

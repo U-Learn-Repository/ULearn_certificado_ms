@@ -4,3 +4,5 @@ CREATE TABLE IF NOT EXISTS certificado (
     texto text NOT NULL, 
     id_usuario integer DEFAULT 1 NOT NULL,
     id_curso integer NOT NULL );
+
+INSERT INTO TABLE()
